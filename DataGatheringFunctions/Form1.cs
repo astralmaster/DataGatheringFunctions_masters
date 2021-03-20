@@ -32,7 +32,7 @@ namespace DataGatheringFunctions
 
             // get articles from MySQL database filled with metadata
 
-            var sqlArticles = await MySQLHandler.GetAllArticlesWithMetadata();
+            var sqlArticles = await MySQLHandler.GetAllArticlesWithMetadataAsync();
 
             //var data = Newtonsoft.Json.JsonConvert.SerializeObject(sqlArticles);
             //File.WriteAllText(@"D:\wamp\tmp\sqlData.json", data);

@@ -37,7 +37,7 @@ namespace WordExtractionApp
                 int levenshteinDistance = lev.DistanceFrom("ფეხბურთელმა");
             */
 
-            var data = await MySQLHandler.GetAllArticlesTextCombined();
+            var data = await MySQLHandler.GetAllArticlesTextCombinedAsync();
             data = data.Replace("<dmz>", " ");
 
             var text = data;
@@ -163,7 +163,7 @@ namespace WordExtractionApp
             var wordsWithOccurences = _intermediateWordContainer;
 
 
-            var articles = await MySQLHandler.GetAllArticles();
+            var articles = await MySQLHandler.GetAllArticlesAsync();
             //articles.Reverse();
             //articles = articles.Take(110).ToList();
             // take top 1000 words 
@@ -247,7 +247,7 @@ namespace WordExtractionApp
 
         private async void button5_Click(object sender, EventArgs e)
         {
-            var titlesData = await MySQLHandler.GetAllArticlesTitlesCombined();
+            var titlesData = await MySQLHandler.GetAllArticlesTitlesCombinedAsync();
             var file = @"D:\wamp\tmp\titlesData.txt";
 
             if(File.Exists(file))

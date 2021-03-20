@@ -52,7 +52,7 @@ namespace HandlersAndModels.Handlers
 
     public static class MySQLHandler
     {
-        public static async Task<List<Article>> GetAllArticles()
+        public static async Task<List<Article>> GetAllArticlesAsync()
         {
             var dbCon = DBConnection.Instance();
             var retData = new List<Article>();
@@ -83,7 +83,7 @@ namespace HandlersAndModels.Handlers
             return retData;
         }
 
-        public static async Task<string> GetAllArticlesTitlesCombined()
+        public static async Task<string> GetAllArticlesTitlesCombinedAsync()
         {
             var dbCon = DBConnection.Instance();
             var retData = string.Empty;
@@ -105,7 +105,7 @@ namespace HandlersAndModels.Handlers
             return retData;
         }
 
-        public static async Task<string> GetAllArticlesTextCombined()
+        public static async Task<string> GetAllArticlesTextCombinedAsync()
         {
             var dbCon = DBConnection.Instance();
             var retData = string.Empty;
@@ -127,7 +127,7 @@ namespace HandlersAndModels.Handlers
             return retData;
         }
 
-        public static async Task<List<SqlArticleItem>> GetAllArticlesWithMetadata()
+        public static async Task<List<SqlArticleItem>> GetAllArticlesWithMetadataAsync()
         {
             var dbCon = DBConnection.Instance();
             var retData = new List<SqlArticleItem>();
