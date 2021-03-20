@@ -60,7 +60,7 @@ namespace HandlersAndModels.Handlers
             if (await dbCon.IsConnected())
             {
 
-                string query = "SELECT id,text,view FROM cry_news";
+                string query = "SELECT id,text,view FROM red_news";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = await cmd.ExecuteReaderAsync();
                 while(await reader.ReadAsync())
@@ -91,7 +91,7 @@ namespace HandlersAndModels.Handlers
             if (await dbCon.IsConnected())
             {
 
-                string query = "SET SESSION group_concat_max_len = 100000000; SELECT GROUP_CONCAT(CONCAT(name, '<dmz>')) FROM cry_news";
+                string query = "SET SESSION group_concat_max_len = 100000000; SELECT GROUP_CONCAT(CONCAT(name, '<dmz>')) FROM red_news";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = await cmd.ExecuteReaderAsync();
                 while(await reader.ReadAsync())
@@ -113,7 +113,7 @@ namespace HandlersAndModels.Handlers
             if (await dbCon.IsConnected())
             {
 
-                string query = "SET SESSION group_concat_max_len = 100000000; SELECT GROUP_CONCAT(CONCAT(text, '<dmz>')) FROM cry_news";
+                string query = "SET SESSION group_concat_max_len = 100000000; SELECT GROUP_CONCAT(CONCAT(text, '<dmz>')) FROM red_news";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = await cmd.ExecuteReaderAsync();
                 while(await reader.ReadAsync())
@@ -142,7 +142,7 @@ namespace HandlersAndModels.Handlers
 	                                cn.view, 
 	                                COALESCE( 
 		                                NULLIF( preferred_menu, 0 ), 
-		                                (SELECT menu_id FROM cry_news_menu WHERE news_id = cn.id ORDER BY id ASC LIMIT 1) 
+		                                (SELECT menu_id FROM red_news_menu WHERE news_id = cn.id ORDER BY id ASC LIMIT 1) 
 	                                ) as MainArticleCategory,
 	                                cn.news_type,
 	                                GROUP_CONCAT(cnm.menu_id) as Tags,
@@ -151,11 +151,11 @@ namespace HandlersAndModels.Handlers
 	                                cn.insert_time,
                                     cn.name
 	                                
-                                FROM cry_news cn 
+                                FROM red_news cn 
 
-                                LEFT JOIN cry_news_menu cnm ON cn.id = cnm.news_id
+                                LEFT JOIN red_news_menu cnm ON cn.id = cnm.news_id
 
-                                LEFT JOIN cry_video cv ON cn.video_id = cv.video_url
+                                LEFT JOIN red_video cv ON cn.video_id = cv.video_url
 
                                 GROUP BY cn.id, cn.text, cn.view, MainArticleCategory, cn.news_type, Metadata, cn.video_id
 
